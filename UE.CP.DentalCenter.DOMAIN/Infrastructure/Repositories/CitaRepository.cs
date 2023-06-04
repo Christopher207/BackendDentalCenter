@@ -19,7 +19,11 @@ namespace UE.CP.DentalCenter.DOMAIN.Infraestructura.Repositories
         {
             _context = context;
         }
-
+        public async Task<IEnumerable<Cita>> GetCitas()
+        {
+            var citas = await _context.Cita.ToListAsync();
+            return citas;
+        }
         public async Task<bool> Insert(Cita cita)
         {
             await _context.Cita.AddAsync(cita);

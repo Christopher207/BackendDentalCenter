@@ -9,6 +9,7 @@ namespace UE.CP.DentalCenter.DOMAIN.Core.Interface
 {
     public interface ICitaRepository
     {
+        Task<IEnumerable<Cita>> GetCitas();
         Task<bool> Insert(Cita cita);
         Task<Cita> GetCitaById(int id);
         Task<Cita> GetPacienteById(int id);

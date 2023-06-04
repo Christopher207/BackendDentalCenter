@@ -6,6 +6,7 @@ using UE.CP.DentalCenter.DOMAIN.Core.Interface;
 using UE.CP.DentalCenter.DOMAIN.Core.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using UE.CP.DentalCenter.DOMAIN.Infrastructure.Repositories;
 
 namespace DentalCentelBacked.Controllers
 {
@@ -74,6 +75,17 @@ namespace DentalCentelBacked.Controllers
             var citaList = mapper.Map<List<CitaDTO>>(cita);
             if (citaList == null)
                 return NotFound();
+            return Ok(citaList);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetAllCitas()
+        {
+
+            var cita = await _citaRepository.GetCitas();
+
+            var citaList = mapper.Map<List<CitaDTO>>(cita);
+
+
             return Ok(citaList);
         }
 
